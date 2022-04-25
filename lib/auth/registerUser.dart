@@ -73,7 +73,7 @@ class _SignUpState extends State<SignUp> {
     //save user information in shared preferences
     saveUserInfo();
 
-    String url = "http://192.168.43.112:8000/api/user/";
+    String url = "$url/api/user/";
     //single quotes are important
     Map<String, dynamic> userDetails = {
       'name': name,
@@ -82,7 +82,7 @@ class _SignUpState extends State<SignUp> {
       'phone': phone,
       'acceptedRides': []
     };
-
+    print("gonna request ${url}");
     //send user sign up details to backend
     // http.patch(url);
     // Uri a = Uri(url);
