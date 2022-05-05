@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:mecdrive_app/Constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUp extends StatefulWidget {
@@ -73,7 +74,7 @@ class _SignUpState extends State<SignUp> {
     //save user information in shared preferences
     saveUserInfo();
 
-    String url = "$url/api/user/";
+    String url = "$URL/api/user/";
     //single quotes are important
     Map<String, dynamic> userDetails = {
       'name': name,

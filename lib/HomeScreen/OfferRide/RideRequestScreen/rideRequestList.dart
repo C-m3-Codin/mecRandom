@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mecdrive_app/Constants.dart';
 import 'package:mecdrive_app/HomeScreen/OfferRide/RideRequestClass/rideRequest.dart';
 import 'package:mecdrive_app/misc/convertTime.dart';
 import 'acceptCard.dart';
@@ -30,7 +31,7 @@ class _RideRequestListState extends State<RideRequestList> {
     _isLoading = false;
 
     return http
-        .get(Uri.parse("http://192.168.43.112:8000/api/request/"))
+        .get(Uri.parse("$URL/api/request/"))
         .then((response) {
       final List<RideRequest> fetchedRequests = [];
       final List<dynamic> responseData = json.decode(response.body);

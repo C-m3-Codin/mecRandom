@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:mecdrive_app/Constants.dart';
 import 'package:mecdrive_app/misc/convertTime.dart';
 import 'dart:async';
 
@@ -21,7 +22,7 @@ class _ConfirmCardState extends State<ConfirmCard> {
   void postData(SnackBar snack) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
 
-    String url = "http://192.168.43.112:8000/api/request/";
+    String url = "$URL/api/request/";
     Map<String, String> rideRequest = {
       'userId': pref.getString('token')!,
       'location': widget.location,

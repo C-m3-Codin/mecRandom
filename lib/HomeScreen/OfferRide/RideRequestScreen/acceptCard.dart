@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:mecdrive_app/Constants.dart';
 import 'package:mecdrive_app/misc/convertTime.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'setPrice.dart';
@@ -80,7 +81,7 @@ class _AcceptCardState extends State<AcceptCard> {
     SharedPreferences pref = await SharedPreferences.getInstance();
 
     String url =
-        "http://192.168.43.112:8000/api/request/" + widget.requestedUserId;
+        "$URL/api/request/" + widget.requestedUserId;
     Map<String, String> offerRequest = {
       'driverName': pref.getString('userName')!,
       'driverPhone': pref.getString('userPhone')!,
