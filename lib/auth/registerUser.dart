@@ -87,6 +87,19 @@ class _SignUpState extends State<SignUp> {
     //send user sign up details to backend
     // http.patch(url);
     // Uri a = Uri(url);
+    print("\n\n\n\n user deets${userDetails}");
+    String body = json.encode(userDetails);
+    print("\n\n\n body: " + body);
+
+    print("\n\n\n\n user deets jsom ${json.encode(userDetails)}");
+
+    // http.Response response = await http.post(
+    //   Uri.parse(url),
+    //   headers: {'Content-Type': 'application/json'},
+    //   body: body,
+    //   encoding: Encoding.getByName('utf-8'),
+    // );
+
     http
         .post(Uri.parse(url),
             headers: {"Content-Type": "application/json"},

@@ -33,8 +33,7 @@ class _AcceptCardState extends State<AcceptCard> {
 
   _getUserDetails() {
     http
-        .get(Uri.parse("http://192.168.43.112:8000/api/user/info/" +
-            widget.requestedUserId))
+        .get(Uri.parse("${URL}/api/user/info/" + widget.requestedUserId))
         .then((response) {
       print(response.body);
       final Map<String, dynamic> user = json.decode(response.body);
@@ -80,8 +79,7 @@ class _AcceptCardState extends State<AcceptCard> {
   _postOfferRequest() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
 
-    String url =
-        "$URL/api/request/" + widget.requestedUserId;
+    String url = "$URL/api/request/" + widget.requestedUserId;
     Map<String, String> offerRequest = {
       'driverName': pref.getString('userName')!,
       'driverPhone': pref.getString('userPhone')!,

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:mecdrive_app/MyRides/acceptedRides.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../Constants.dart';
 import '../misc/convertTime.dart';
 import '../misc/phoneCall.dart';
 
@@ -31,8 +32,7 @@ class _MyRidesState extends State<MyRides> {
     SharedPreferences pref = await SharedPreferences.getInstance();
 
     return http
-        .get(Uri.parse(
-            "http://192.168.43.112:8000/api/user/" + pref.getString('token')!))
+        .get(Uri.parse("${URL}/api/user/" + pref.getString('token')!))
         .then((response) {
       final List<AcceptedRide> fetchedRides = [];
       //responseData gives user's accepted rides list
