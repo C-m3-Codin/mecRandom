@@ -27,13 +27,14 @@ class _ConfirmCardState extends State<ConfirmCard> {
       'userId': pref.getString('token')!,
       'location': widget.location,
       'time': widget.time.toString(),
+      'accepted': "False"
     };
 
     //test code -- working
     http
         .post(Uri.parse(url),
             headers: {"Content-Type": "application/json"},
-            body: json.encode(rideRequest)) 
+            body: json.encode(rideRequest))
         .then((response) {
       final Map<String, dynamic> responseData = json.decode(response.body);
       print(responseData);

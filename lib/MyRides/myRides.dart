@@ -42,10 +42,11 @@ class _MyRidesState extends State<MyRides> {
           _isLoading = false;
         });
       }
-      // print(responseData); //working till here
+      print(responseData); //working till here
 
       var length = responseData.length;
       for (var i = 0; i < length; i++) {
+        print(responseData[i]);
         final AcceptedRide request = AcceptedRide(
           acceptedDriverName: responseData[i]['driverName'],
           acceptedDriverNumber: responseData[i]['driverPhone'],

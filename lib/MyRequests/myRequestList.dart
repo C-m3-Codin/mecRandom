@@ -12,7 +12,7 @@ class MyRequestList extends StatefulWidget {
 }
 
 class _MyRequestListState extends State<MyRequestList> {
-  bool accept = true;
+  bool accept = false;
 
   // List that contains requests from users
   List<MyRequest> _requests = [];
@@ -33,7 +33,9 @@ class _MyRequestListState extends State<MyRequestList> {
     SharedPreferences pref = await SharedPreferences.getInstance();
     String userId = pref.getString('token')!;
 
-    return http.get(Uri.parse("$URL/api/request/myrequest/")).then((response) {
+    return http
+        .get(Uri.parse("$URL/api/request/myrequest/" + userId))
+        .then((response) {
       print(" \n\n\n\n\n\n data response all request :${response}");
       final List<MyRequest> fetchedRequests = [];
       final List<dynamic> responseData = json.decode(response.body);
@@ -50,6 +52,7 @@ class _MyRequestListState extends State<MyRequestList> {
           destination: responseData[i]['location'],
           time: responseData[i]['time'],
         );
+        request.setAcceted(responseData[i]['accepted']);
         fetchedRequests.add(request);
       }
 
@@ -67,10 +70,8 @@ class _MyRequestListState extends State<MyRequestList> {
   }
 
   deleteRequest(String id) {
-    http
-        .delete(Uri.parse("http://192.168.43.112:8000/api/request/" + id))
-        .then((response) {
-      print(response);
+    http.delete(Uri.parse("${URL}/api/request/" + id)).then((response) {
+      print("\n\n\n\n response is : ${response}");
     }).catchError((e) {
       print(e);
     });
@@ -122,7 +123,7 @@ class _MyRequestListState extends State<MyRequestList> {
             title: Text(_requests[index].destination),
             subtitle: Text("Time: " + _requests[index].time),
             // convertTimeTo12Hour(_requests[index].time)),
-            trailing: accept == true
+            trailing: _requests[index].Accepted == "true"
                 ? Icon(
                     Icons.check_circle,
                     color: Colors.green,

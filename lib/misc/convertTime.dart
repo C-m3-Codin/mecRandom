@@ -1,9 +1,8 @@
-
 convertTimeTo12Hour(time24) {
   // time24=time24.substring(1,time24.length-1);
-  var time2=time24.split('(');
-  time2=time2[1].split(')');
-  time24=time2[0];
+  var time2 = time24.split('(');
+  time2 = time2[1].split(')');
+  time24 = time2[0];
   var time = time24.split(':');
   var hours = int.parse(time[0]);
   var mins = int.parse(time[1]);

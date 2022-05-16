@@ -8,7 +8,7 @@ class OfferRide extends StatefulWidget {
 }
 
 class _OfferRideState extends State<OfferRide> {
-  bool carRegistered = true;
+  bool carRegistered = false;
 
   @override
   void initState() {
@@ -98,7 +98,7 @@ class _NotRegisteredState extends State<NotRegistered> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Color.fromRGBO(255, 255, 255, 1),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

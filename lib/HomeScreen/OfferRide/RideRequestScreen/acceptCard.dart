@@ -12,7 +12,9 @@ class AcceptCard extends StatefulWidget {
   String destination;
   String time;
   String requestedUserId;
-  AcceptCard(this.destination, this.time, this.requestedUserId);
+  String requestRideId;
+  AcceptCard(
+      this.destination, this.time, this.requestedUserId, this.requestRideId);
   @override
   _AcceptCardState createState() => _AcceptCardState();
 }
@@ -74,6 +76,7 @@ class _AcceptCardState extends State<AcceptCard> {
     );
 
     _postOfferRequest();
+    // _postRideRequesAccept();
   }
 
   _postOfferRequest() async {
@@ -85,7 +88,8 @@ class _AcceptCardState extends State<AcceptCard> {
       'driverPhone': pref.getString('userPhone')!,
       'location': widget.destination,
       'time': widget.time,
-      'rate': price
+      'rate': price,
+      "requestRideId": widget.requestRideId
     };
 
     //test code
@@ -94,8 +98,9 @@ class _AcceptCardState extends State<AcceptCard> {
             headers: {"Content-Type": "application/json"},
             body: json.encode(offerRequest))
         .then((response) {
-      final Map<String, dynamic> responseData = json.decode(response.body);
-      print(responseData);
+      // final Map<String, dynamic> responseData = json.decode(response.body);
+      // print(responseData);
+      print(response.body);
 
       Timer(Duration(seconds: 3), () {
         Navigator.of(context).pop();
@@ -199,7 +204,7 @@ class _AcceptCardState extends State<AcceptCard> {
               ),
             ),
           ),
-          SizedBox(height: 40),
+          SizedBox(height: 20),
           SizedBox(
             width: MediaQuery.of(context).size.width / 1.5,
             child: RaisedButton(

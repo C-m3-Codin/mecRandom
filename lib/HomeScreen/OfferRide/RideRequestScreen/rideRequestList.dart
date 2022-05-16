@@ -30,9 +30,7 @@ class _RideRequestListState extends State<RideRequestList> {
   Future<dynamic> fetchRequests() {
     _isLoading = false;
 
-    return http
-        .get(Uri.parse("$URL/api/request/"))
-        .then((response) {
+    return http.get(Uri.parse("$URL/api/request/")).then((response) {
       final List<RideRequest> fetchedRequests = [];
       final List<dynamic> responseData = json.decode(response.body);
       if (responseData == null) {
@@ -43,12 +41,14 @@ class _RideRequestListState extends State<RideRequestList> {
 
       var length = responseData.length;
       for (var i = 0; i < length; i++) {
-        final RideRequest request = RideRequest(
+        RideRequest request = RideRequest(
           requestedUserId: responseData[i]['userId'],
           destination: responseData[i]['location'],
           time: responseData[i]['time'],
         );
+        request.setRequestId(responseData[i]['_id']);
         fetchedRequests.add(request);
+        print(" request id are: ${fetchedRequests[i].requestID}");
       }
 
       setState(() {
@@ -92,7 +92,8 @@ class _RideRequestListState extends State<RideRequestList> {
               builder: (context) => AcceptCard(
                   _requests[index].destination,
                   _requests[index].time,
-                  _requests[index].requestedUserId)).then((check) {
+                  _requests[index].requestedUserId,
+                  _requests[index].requestID)).then((check) {
             if (check == "success") {
               //Show Snackbar
               final snack = SnackBar(
