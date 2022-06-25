@@ -11,7 +11,7 @@ class _CreditsState extends State<Credits> {
     return new Scaffold(
       appBar: AppBar(
         title: Text(
-          'Absolute™',
+          'Team-17™',
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         backgroundColor: Colors.black,
@@ -24,15 +24,23 @@ class _CreditsState extends State<Credits> {
             Center(
               child: Column(
                 children: <Widget>[
-                  profile('Joyal A Johney', 'assets/joyal.jpg', 'Computer Science'),
+                  profile('Diya PA', 'assets/Diya.jpeg',
+                      'Electronics and communication engineering'),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height/50,
+                    height: MediaQuery.of(context).size.height / 50,
                   ),
-                  profile('Steev James', 'assets/steeve.jpg', 'Computer Science'),
+                  profile('Arya Jayakrishnan', 'assets/Arya.jpeg',
+                      'Electronics and communication engineering'),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height/50,
+                    height: MediaQuery.of(context).size.height / 50,
                   ),
-                  profile('Nikhil Babu', 'assets/nikhil.jpg', 'Computer Science'),
+                  profile('Anju Joseph', 'assets/Anju.jpeg',
+                      'Electronics and communication engineering'),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 50,
+                  ),
+                  profile('Megha Dinakaran', 'assets/Megha.jpeg',
+                      'Electronics and communication engineering'),
                 ],
               ),
             ),
@@ -51,10 +59,10 @@ Widget profile(name, image, dept) {
         width: 120,
         height: 120,
         decoration: BoxDecoration(
-            color: Colors.black,
-            image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
-            borderRadius: BorderRadius.all(Radius.circular(75.0)),
-            // boxShadow: [BoxShadow(blurRadius: 9.0, color: Colors.black)]),
+          color: Colors.black,
+          image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
+          borderRadius: BorderRadius.all(Radius.circular(75.0)),
+          // boxShadow: [BoxShadow(blurRadius: 9.0, color: Colors.black)]),
         ),
       ),
       Container(
